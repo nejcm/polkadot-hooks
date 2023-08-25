@@ -27,7 +27,7 @@ jobs:
         run: yarn install --immutable
 
       - name: 📖 Build docs
-        run: yarn docs:build
+        run: yarn docs:build && touch ./storybook-static/.nojekyll
   
       - name: 🚀 Deploy docs
         uses: JamesIves/github-pages-deploy-action@v4
