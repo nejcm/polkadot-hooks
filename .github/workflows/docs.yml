@@ -1,13 +1,11 @@
-name: release
+name: docs
 on:
-  push:
-    branches: [main]
+  pull_request:
   workflow_dispatch:
 
 jobs:
-  release:
-    name: Running release
-    if: "!contains(toJSON(github.event.commits.*.message), 'chore(release):')"
+  build:
+    name: Running docs
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -18,14 +16,6 @@ jobs:
     steps:
       - name: 🛒 Checkout code
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GH_TOKEN }}
-      
-      - name: ⚙️ Git config
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
       - name: 💿 Setup Nodejs
         uses: actions/setup-node@v3
@@ -35,15 +25,6 @@ jobs:
 
       - name: 🧩 Install dependencies
         run: yarn install --immutable
-
-      - name: 📦 Release
-        run: |
-          npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
-          npm config set access=public
-          yarn release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: 📖 Build docs
         run: yarn docs:build && touch ./storybook-static/.nojekyll
@@ -55,4 +36,3 @@ jobs:
           branch: gh-pages
           clean: true
           token: ${{ secrets.GH_TOKEN }}
-      
