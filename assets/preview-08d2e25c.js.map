@@ -1,1 +1,0 @@
-{"version":3,"file":"preview-08d2e25c.js","sources":["../../.storybook/preview.ts"],"sourcesContent":["import { Preview } from '@storybook/react';\nimport './global.css';\n\n\nconst preview: Preview = {\n  parameters: {},\n};\n\nexport default preview;\n"],"names":["preview"],"mappings":"AAIA,MAAMA,EAAmB,CACvB,WAAY,CAAC,CACf"}
