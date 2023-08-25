@@ -5,7 +5,7 @@ const scope = packageName.split('/')[1];
 module.exports = {
   git: {
       push: true,
-      tagName: `${packageName}@v${version}`,
+      tagName: `v${version}`,
       commitMessage: `release(${scope}): ${packageName} v${version} [skip ci]`,
       requireCommits: true,
       requireCommitsFail: false,
