@@ -1,0 +1,14 @@
+{
+  "extends": "@nejcm/configs/src/tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "target": "ESNext",
+    "types": ["jest", "node", "@nejcm/configs/src/global.d.ts"],
+    "declarationDir": "types",
+    "sourceMap": true
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "dist", "types", ".yarn", ".pnp.cjs", ".pnp.loader.mjs"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

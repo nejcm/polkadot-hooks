@@ -1,0 +1,16 @@
+module.exports = {
+  git: {
+      push: true,
+      tagName: `${packageName}@v${version}`,
+      commitMessage: `release(${scope}): ${packageName} v${version} [skip ci]`,
+      requireCommits: true,
+      requireCommitsFail: false,
+      requireCleanWorkingDir: false,
+    },
+    npm: {
+      publish: true,
+    },
+    github: {
+      release: false,
+    }, 
+}
