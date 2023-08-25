@@ -1,0 +1,38 @@
+name: docs
+on:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Running docs
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18]
+    env:
+      CI: true
+
+    steps:
+      - name: 🛒 Checkout code
+        uses: actions/checkout@v3
+
+      - name: 💿 Setup Nodejs
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
+
+      - name: 🧩 Install dependencies
+        run: yarn install --immutable
+
+      - name: 📖 Build docs
+        run: yarn docs:build
+  
+      - name: 🚀 Deploy docs
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: storybook-static
+          branch: gh-pages
+          clean: true
+          token: ${{ secrets.GH_TOKEN }}

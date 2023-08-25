@@ -2418,7 +2418,7 @@ __metadata:
     release-it: "npm:^16.1.5"
     storybook: "npm:7.3.2"
     typescript: "npm:^5.2.2"
-    vite: "npm:^4.4.9"
+    vite: "npm:4.4.1"
   peerDependencies:
     react: ">=16.8.2"
   languageName: unknown
@@ -12655,7 +12655,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.27":
+"postcss@npm:^8.4.24":
   version: 8.4.28
   resolution: "postcss@npm:8.4.28"
   dependencies:
@@ -13680,7 +13680,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup@npm:^2.25.0 || ^3.3.0, rollup@npm:^3.27.1":
+"rollup@npm:^2.25.0 || ^3.3.0, rollup@npm:^3.25.2":
   version: 3.28.1
   resolution: "rollup@npm:3.28.1"
   dependencies:
@@ -15215,14 +15215,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^4.4.9":
-  version: 4.4.9
-  resolution: "vite@npm:4.4.9"
+"vite@npm:4.4.1":
+  version: 4.4.1
+  resolution: "vite@npm:4.4.1"
   dependencies:
     esbuild: "npm:^0.18.10"
     fsevents: "npm:~2.3.2"
-    postcss: "npm:^8.4.27"
-    rollup: "npm:^3.27.1"
+    postcss: "npm:^8.4.24"
+    rollup: "npm:^3.25.2"
   peerDependencies:
     "@types/node": ">= 14"
     less: "*"
@@ -15251,7 +15251,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: d15543bded36f2083c13286b5420e89673be99abd28664f27a73980f2099f10e427b07e24f4e035dcd682989ebf8e1e5f5257664771edd4b466e2599119d1a47
+  checksum: d4827cdd41c8bb69c5071200a88015fa3c4d29082c46fd9f20db8df01f7b4948042e4b2e67b6a4391c0bdbfc6c4925832cc6b2411661518988c9a25d4b887598
   languageName: node
   linkType: hard
 
