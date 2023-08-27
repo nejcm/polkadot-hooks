@@ -66,6 +66,7 @@
     "@nejcm/configs": "^1.2.2",
     "@polkadot/types": "^10.9.1",
     "@polkadot/types-codec": "^10.9.1",
+    "@release-it/conventional-changelog": "^7.0.0",
     "@storybook/addon-essentials": "7.3.2",
     "@storybook/addon-interactions": "7.3.2",
     "@storybook/addon-links": "7.3.2",

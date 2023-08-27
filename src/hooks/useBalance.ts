@@ -10,7 +10,7 @@ import { useContract } from './useContract';
 
 export type UseBalanceProps = {
   /** token or contract address */
-  contractAddress?: string;
+  contract?: string;
   /** account address */
   account?: string;
 };
@@ -23,15 +23,15 @@ export type UseBalanceResponse = UseQueryResult<
   enabled: boolean;
 };
 
-export const useContractBalance = (
-  { contractAddress, account }: UseBalanceProps,
+export const useBalance = (
+  { contract, account }: UseBalanceProps,
   options?: QueryOptions,
 ): UseBalanceResponse => {
   const { api, address: defAddress } = useGlobalContext();
   const address = account || defAddress;
 
   const enabled = !!api && !!address && options?.enabled !== false;
-  const query = useContract([cacheKeys.balance, contractAddress, address], {
+  const query = useContract([cacheKeys.balance, contract, address], {
     cacheTime: 180000,
     staleTime: 180000,
     retry: 2,
@@ -39,7 +39,7 @@ export const useContractBalance = (
     refetchOnWindowFocus: false,
     ...options,
     abi: ERC20,
-    address: contractAddress,
+    address: contract,
     method: 'balanceOf',
     args: [address],
     owner: address,
@@ -47,7 +47,7 @@ export const useContractBalance = (
   });
   const { data } = query;
   const val = useMemo(() => {
-    if (!data?.result?.isOk || data?.output === undefined) return {};
+    if (!data?.result?.isOk || data?.output === undefined) return undefined;
     const balance = nativeToDecimal(
       parseFloat(data.output.toString()) || 0,
     ).toNumber();
@@ -57,5 +57,6 @@ export const useContractBalance = (
   return {
     ...query,
     ...val,
+    enabled,
   };
 };

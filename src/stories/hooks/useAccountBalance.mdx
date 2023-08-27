@@ -1,0 +1,40 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="hooks/useAccountBalance" />
+
+# useAccountBalance
+
+Hook for fetching the account balance information.
+
+## Usage
+
+```js
+import { useAccountBalance } from '@nejcm/polkadot-hooks';
+
+const YourComponent = () => {
+  const response = useAccountBalance(
+    '0xA0Cf7s8583g4391286ab534jEga46ff838n4256a',
+    {
+      staleTime: 12000,
+    },
+  );
+};
+```
+
+## Arguments
+
+- first argument is the account address
+- second argument is
+  [useQuery options](https://tanstack.com/query/v5/docs/react/reference/useQuery)
+
+## Response
+
+```ts
+type Response = {
+  balance?: number;
+  formatted?: string;
+  enabled: boolean;
+};
+```
+
+- the object also contains [useQuery result/return](https://tanstack.com/query/v5/docs/react/reference/useQuery)

@@ -3,6 +3,12 @@ const packageName = process.env.npm_package_name;
 const scope = packageName.split('/')[1];
 
 module.exports = {
+  plugins: {
+    '@release-it/conventional-changelog': {
+      infile: 'CHANGELOG.md',
+      preset: 'conventionalcommits',
+    },
+  },
   git: {
       push: true,
       tagName: `v${version}`,

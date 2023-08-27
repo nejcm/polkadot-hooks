@@ -1,0 +1,53 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="hooks/useBalance" />
+
+# useBalance
+
+Hook for fetching the balance information for different account, contracts, ...
+
+## Usage
+
+```js
+import { useBalance } from '@nejcm/polkadot-hooks';
+
+const YourComponent = () => {
+  const response = useBalance(
+    {
+      contract: '0xA0Cf7s8583g4391286ab534jEga46ff838n4256a',
+      account: '0xC1Af7s15a3g439frw83ab111jzvl42po818se561',
+    },
+    {
+      staleTime: 12000,
+    },
+  );
+};
+```
+
+## Arguments
+
+- first argument
+
+```ts
+{
+  /** token or contract address */
+  contract?: string;
+  /** account address */
+  account?: string;
+}
+```
+
+- second argument is
+  [useQuery options](https://tanstack.com/query/v5/docs/react/reference/useQuery)
+
+## Response
+
+```ts
+type Response = {
+  balance?: number;
+  formatted?: string;
+  enabled: boolean;
+};
+```
+
+- the object also contains [useQuery result/return](https://tanstack.com/query/v5/docs/react/reference/useQuery)

@@ -1,0 +1,56 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="hooks/useContractWrite" />
+
+# useContractWrite
+
+Hook for executing write methods from a contract.
+
+## Usage
+
+```js
+import { useContractWrite } from '@nejcm/polkadot-hooks';
+
+const YourComponent = () => {
+  const response = useContractWrite({
+    abi: RouterAbi,
+    address: '0xC1Af7s15a3g439frw83ab111jzvl42po818se561',
+    method: 'deposit',
+    args: ['0xd1af7sd3a3gs32ffw83abs11jzal425of86se7580', '000030000000000000'],
+    staleTime: 12000,
+  });
+};
+```
+
+## Arguments
+
+```ts
+type Args = {
+  abi: AbiDefinition;
+  address?: string;
+  method: string;
+  args?: any[];
+  options?: ContractOptions | ((api: ApiPromise) => ContractOptions);
+};
+```
+
+- the object also contains
+  [useMutation options](https://tanstack.com/query/v5/docs/react/reference/useMutation)
+
+## Response
+
+```ts
+type Response = {
+  enabled: boolean;
+  data: TransactionsStatus | undefined;
+  isReady: boolean;
+};
+
+type TransactionsStatus = {
+  hex?: string;
+  status?: ExtrinsicStatus['type'] | 'Pending';
+};
+
+```
+
+- the object also contains [useMutation result/return](https://tanstack.com/query/v5/docs/react/reference/useMutation)

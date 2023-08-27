@@ -1,0 +1,55 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="hooks/useTokenApproval" />
+
+# useTokenApproval
+
+Hook for managing token allowance and approval.
+
+## Usage
+
+```js
+import { useTokenApproval } from '@nejcm/polkadot-hooks';
+
+const YourComponent = () => {
+  const response = useTokenApproval({
+    abi: RouterAbi,
+    spender: '0xd1af7sd3a3gs32ffw83abs11jzal425of86se7580',
+    token: '0xC1Af7s15a3g439frw83ab111jzvl42po818se561',
+    amount: 1000,
+    approveMax: false,
+    onSuccess: () => console.log('SUCCESS')
+  });
+};
+```
+
+## Arguments
+
+```ts
+type Args = {
+  spender?: string;
+  token?: string;
+  amount?: number;
+  approveMax?: boolean;
+  enabled?: boolean;
+  onError?: (err: any) => void;
+  onSuccess?: UseContractWriteProps['onSuccess'];
+};
+```
+
+## Response
+
+```ts
+type Response = [ApprovalState, UseContractWriteResponse];
+
+enum ApprovalState {
+  UNKNOWN,
+  LOADING,
+  PENDING,
+  NOT_APPROVED,
+  APPROVED,
+}
+
+```
+
+- [UseContractWriteResponse](?path=/docs/hooks-usecontractwrite--docs)

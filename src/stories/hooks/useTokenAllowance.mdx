@@ -1,0 +1,42 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="hooks/useTokenAllowance" />
+
+# useTokenAllowance
+
+Hook for fetching token allowance.
+
+## Usage
+
+```js
+import { useTokenAllowance } from '@nejcm/polkadot-hooks';
+
+const YourComponent = () => {
+  const response = useTokenAllowance({
+    abi: RouterAbi,
+    token: '0xC1Af7s15a3g439frw83ab111jzvl42po818se561',
+    spender: '0xd1af7sd3a3gs32ffw83abs11jzal425of86se7580',
+    owner: '0xF7D3C3ABf8b9a1462689d927f13be7f656b2d9C3',
+    staleTime: 12000,
+  });
+};
+```
+
+## Arguments
+
+- first argument is
+
+```ts
+type Args = {
+  token?: string;
+  spender: string | undefined;
+  owner: string | undefined;
+};
+```
+
+- second argument is
+  [useQuery options](https://tanstack.com/query/v5/docs/react/reference/useQuery)
+
+## Response
+
+- response is equal to [useContract](?path=/docs/hooks-usecontract--docs)

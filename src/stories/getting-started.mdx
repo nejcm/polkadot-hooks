@@ -1,0 +1,25 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Getting started" />
+
+# Setup
+
+Wrap your app with a provider and supply the necessary values. While these
+values are undefined (user does not have the wallet connected) some of the hooks
+will be disabled.
+
+- api: polkadot ApiPromise
+- signer: wallet signer
+- address: wallet address
+
+```js
+import { HooksGlobalProvider } from '@nejcm/polkadot-hooks';
+
+const YourComponent = ({ children }) => {
+  return (
+    <HooksGlobalContext.Provider api={api} signer={signer} address={address}>
+      {children}
+    </HooksGlobalContext.Provider>
+  );
+};
+```

@@ -6,18 +6,22 @@ import { cacheKeys } from '../constants';
 import { QueryOptions, emptyCacheKey, emptyFn } from '../helpers';
 import { nativeToDecimal, prettyNumbers } from '../helpers/parseNumbers';
 
-export interface UseAccountBalanceResponse {
-  query: UseQueryResult<AccountInfo | undefined, unknown>;
-  balance?: string;
+export type UseAccountBalanceResponse = {
+  balance?: number;
+  formatted?: string;
   enabled: boolean;
-}
+} & UseQueryResult<AccountInfo | undefined, unknown>;
+
+export type UseAccountBalanceOptions = QueryOptions<
+  AccountInfo | undefined,
+  unknown
+>;
 
 export const useAccountBalance = (
   address?: string,
-  options?: QueryOptions<AccountInfo | undefined, unknown>,
+  options?: UseAccountBalanceOptions,
 ): UseAccountBalanceResponse => {
   const { api, address: defAddress } = useGlobalContext();
-
   const accountAddress = address || defAddress;
   const enabled = !!api && !!accountAddress && options?.enabled !== false;
   const query = useQuery<AccountInfo | undefined, unknown>(
@@ -38,14 +42,15 @@ export const useAccountBalance = (
   );
   const { data } = query;
 
-  const balance = useMemo(() => {
-    if (!data?.data || !accountAddress) return undefined;
-    return prettyNumbers(nativeToDecimal(data.data.free.toString()).toNumber());
-  }, [data?.data, accountAddress]);
+  const val = useMemo(() => {
+    if (!data?.data) return undefined;
+    const balance = nativeToDecimal(data.data.free.toString()).toNumber();
+    return { balance, formatted: prettyNumbers(balance) };
+  }, [data?.data]);
 
   return {
-    query,
-    balance,
+    ...query,
+    ...val,
     enabled,
   };
 };

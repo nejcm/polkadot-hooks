@@ -1,0 +1,30 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="helpers/parseNumbers" />
+
+# parseNumbers
+
+A set of usefull helpers for parsing numbers, strings, BN, ...
+
+## Usage
+
+### roundNumber
+
+```js
+import { roundNumber } from '@nejcm/polkadot-hooks';
+
+const YourComponent = () => {
+  const rounded = roundNumber(number, 3);
+};
+```
+
+#### Arguments
+
+1. your value as number or string
+2. number of decimals to round to
+
+#### Response
+
+```ts
+type Response = number;
+```

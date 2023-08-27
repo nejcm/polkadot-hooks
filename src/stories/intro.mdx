@@ -1,0 +1,38 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# Polkadot hooks
+
+> ### ⚠️ This library is still under construction. Use with caution
+
+A collection of React Hooks and helpers inspired by [wagmi](https://wagmi.sh/)
+to help start working with Polkadot. Hooks are using
+[react-query](https://tanstack.com/query/v5/docs/react/overview) under the hood
+to levarage benefits of cacahing, request deduplication, loading states,
+pagination, ...
+
+## Install
+
+Yarn or npm
+
+```bash
+yarn add @nejcm/polkadot-hooks
+```
+
+```bash
+npm i @nejcm/polkadot-hooks
+```
+
+## Features
+
+- Hooks for interacting with contracts, fetching balances, subscribing to
+  transactions ...
+- Caching, request deduplication, multicall, batching, and persistence, loading
+  states
+
+## Work in progress and future features
+
+- Wallet connectors for Talisman, WalletConnect, ...
+- Improved TypeScript support
+- Improved helpers for parsing and formating numbers
