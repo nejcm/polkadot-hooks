@@ -7,6 +7,19 @@ module.exports = {
     '@release-it/conventional-changelog': {
       infile: 'CHANGELOG.md',
       preset: 'conventionalcommits',
+      gitRawCommitsOpts: {
+        path: '.',
+      },
+      types: [
+        { type: 'feat', section: 'Features' },
+        { type: 'fix', section: 'Bug Fixes' },
+        { type: 'chore', section: 'Misc' },
+        { type: 'style', section: 'Styling' },
+        { type: 'refactor', hidden: 'Misc' },
+        { type: 'perf', hidden: 'Misc' },
+        { type: 'docs', hidden: true },
+        { type: 'test', hidden: true },
+      ],
     },
   },
   git: {
