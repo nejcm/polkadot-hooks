@@ -25,13 +25,10 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
+          cache: 'yarn'
 
-      - name: 📥 Cache and install
-        uses: ./.github/actions/yarn-cache-install
-        with:
-          enable-corepack: false
-          cache-node-modules: true
-          cache-install-state: true
+      - name: 🧩 Install dependencies
+        run: yarn install --immutable
 
       - name: 📋 Yarn Lock Changes
         uses: Simek/yarn-lock-changes@main

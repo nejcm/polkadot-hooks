@@ -3,7 +3,7 @@ const packageName = process.env.npm_package_name;
 const scope = packageName.split('/')[1];
 
 module.exports = {
-  plugins: {
+  /* plugins: {
     '@release-it/conventional-changelog': {
       infile: 'CHANGELOG.md',
       preset: 'conventionalcommits',
@@ -21,14 +21,15 @@ module.exports = {
         { type: 'test', hidden: true },
       ],
     },
-  },
+  }, */
   git: {
       push: true,
       tagName: `v${version}`,
       commitMessage: `release(${scope}): ${packageName} v${version} [skip ci]`,
       requireCommits: true,
-      requireCommitsFail: false,
+      requireCommitsFail: false, 
       requireCleanWorkingDir: false,
+      changelog: "npx auto-changelog --stdout --commit-limit false -u --template https://raw.githubusercontent.com/release-it/release-it/main/templates/changelog-compact.hbs"
     },
     npm: {
       publish: true,
