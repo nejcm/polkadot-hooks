@@ -2405,6 +2405,7 @@ __metadata:
     babel-preset-vite: "npm:^1.1.0"
     big.js: "npm:^6.2.1"
     bn.js: "npm:^5.2.1"
+    conventional-changelog-conventionalcommits: "npm:^7.0.0"
     eslint: "npm:~8.47.0"
     eslint-config-prettier: "npm:~9.0.0"
     eslint-config-react-app: "npm:~7.0.1"
@@ -7319,6 +7320,15 @@ __metadata:
   dependencies:
     compare-func: "npm:^2.0.0"
   checksum: 7e5caef7d65b381a0b302534058acff83adc7a907094c85379ef138c35f2aa043cf8e7a3bef30f42078dcc4bff0e8bc763b179c007dd732d92856fae0607a4bc
+  languageName: node
+  linkType: hard
+
+"conventional-changelog-conventionalcommits@npm:^7.0.0":
+  version: 7.0.0
+  resolution: "conventional-changelog-conventionalcommits@npm:7.0.0"
+  dependencies:
+    compare-func: "npm:^2.0.0"
+  checksum: 4ac70f757e35cca3c3ef522f85e3bd3e57fa9921f33f40515983695bf900ca3893da2829acb64a66d66180a477ff45cf30d1dc71d6dcd43ca095213b414ee942
   languageName: node
   linkType: hard
 
