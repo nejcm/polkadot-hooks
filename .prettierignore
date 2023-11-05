@@ -5,7 +5,6 @@ build
 types
 storybook-static
 .yarn
-.yarn/
 
 .pnp.cjs
 .pnp.loader.mjs

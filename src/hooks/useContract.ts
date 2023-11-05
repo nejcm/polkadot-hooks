@@ -44,9 +44,12 @@ export const useContract = <T extends Abi | Record<string, unknown>>(
             opts,
             ...(args || []),
           );
-          if (!response?.result?.isOk || response?.output === undefined)
+          if (!response?.result?.isOk || response?.output === undefined) {
             throw response;
-          return response;
+          }
+          // ? TODO: maybe not ideal to cache only output
+          // caching the whole object causes the output to be converted to hex string
+          return response.output?.toString();
         }
       : emptyFn,
     {
